@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import {hash} from 'bcryptjs'
 
 import {IUser} from '../../interfaces/user.interface';
 
@@ -29,5 +30,13 @@ const userSchema:mongoose.Schema<IUser> = new mongoose.Schema({
         default: 'User',
     }
 });
+
+userSchema.pre('save',async function(this:IUser, next){
+    const hashPassword = await hash(this.password, 12);
+
+    this.password = hashPassword;
+
+    next();
+})
 
 export {userSchema};

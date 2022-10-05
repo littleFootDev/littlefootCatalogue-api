@@ -1,12 +1,21 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import json from 'body-parser'
+ 
+import {userRouter} from './routes/user.routes';
 
 dotenv.config();
 
 async function serverSetup() {
     const app: express.Application = express();
     await startServer(app);
+    await middleware(app);
 };
+
+function middleware(app: express.Application) {
+    app.use(json());
+    app.use('/api/users', userRouter);
+}
 
 async function startServer(app: express.Application) {
     try {
