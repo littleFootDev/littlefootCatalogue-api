@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import json from 'body-parser'
+import cookieParser from 'cookie-parser';
  
 import {userRouter} from './routes/user.routes';
 
@@ -14,6 +15,7 @@ async function serverSetup() {
 
 function middleware(app: express.Application) {
     app.use(json());
+    app.use(cookieParser());
     app.use('/api/users', userRouter);
 }
 

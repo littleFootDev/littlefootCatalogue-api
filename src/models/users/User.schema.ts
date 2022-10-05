@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {hash} from 'bcryptjs'
+import {hash, compare} from 'bcryptjs'
 
 import {IUser} from '../../interfaces/user.interface';
 
@@ -37,6 +37,12 @@ userSchema.pre('save',async function(this:IUser, next){
     this.password = hashPassword;
 
     next();
-})
+});
+
+userSchema.methods.comparePassword = function(password: string) : Promise<boolean> {
+    const hashedPassword: string = (this as IUser).password;
+    
+    return compare(password, hashedPassword)
+}
 
 export {userSchema};
