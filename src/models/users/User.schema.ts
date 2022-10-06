@@ -4,7 +4,7 @@ import {hash, compare} from 'bcryptjs'
 import {IUser} from '../../interfaces/user.interface';
 
 const userSchema:mongoose.Schema<IUser> = new mongoose.Schema({
-    speudo : {
+    pseudo : {
         type: String,
         required: true,
         minlenght: 6,

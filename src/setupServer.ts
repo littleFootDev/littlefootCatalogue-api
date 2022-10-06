@@ -1,9 +1,10 @@
-import express from 'express';
+import express, {json} from 'express';
 import dotenv from 'dotenv';
-import json from 'body-parser'
+//import json from 'body-parser'
 import cookieParser from 'cookie-parser';
  
 import {userRouter} from './routes/user.routes';
+import {catalogueRouter} from './routes/catalogue.routes';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ function middleware(app: express.Application) {
     app.use(json());
     app.use(cookieParser());
     app.use('/api/users', userRouter);
+    app.use('/api/catalogues', catalogueRouter);
 }
 
 async function startServer(app: express.Application) {
