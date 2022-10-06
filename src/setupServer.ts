@@ -1,6 +1,6 @@
-import express from 'express';
+import express, {json} from 'express';
 import dotenv from 'dotenv';
-import json from 'body-parser'
+//import json from 'body-parser'
 import cookieParser from 'cookie-parser';
  
 import {userRouter} from './routes/user.routes';
