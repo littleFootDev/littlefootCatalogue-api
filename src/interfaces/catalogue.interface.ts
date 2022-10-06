@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export interface IPost extends mongoose.Document {
+export interface ICatalogue extends mongoose.Document {
     title: string;
     description: string;
     ibnNumber: number;

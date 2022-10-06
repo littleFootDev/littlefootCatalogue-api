@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
-import {IPost} from '../../interfaces/post.interface';
+import {ICatalogue} from '../../interfaces/catalogue.interface';
 
 
-const postSchema : mongoose.Schema<IPost> = new mongoose.Schema({
+const catalogueSchema : mongoose.Schema<ICatalogue> = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -31,4 +31,4 @@ const postSchema : mongoose.Schema<IPost> = new mongoose.Schema({
     },
 });
 
-export {postSchema};
+export {catalogueSchema};
